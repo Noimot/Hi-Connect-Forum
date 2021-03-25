@@ -1,0 +1,10 @@
+
+.logo a {
+  color: rgba(0, 0, 0, 0.9);
+  text-decoration: none !important;
+}
+
+.logo a:hover,
+.logo a:active {
+  text-decoration: none;
+}

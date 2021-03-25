@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+
+
+{% block breadcrumb %}
+<li class="breadcrumb-item active">Category</li>
+{% endblock %}
+
+{% block content %}
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th>Category</th>
+            <th>Posts</th>
+            <th>Topics</th>
+            <th>Last Posts</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cat_list in category %}
+        <tr>
+            <td>
+                <a class="text-decoration-none text-dark fw-bold" href="{% url 'forum_topics' cat_list.pk %}">{{cat_list.name}}</a> <br>
+                <small class="text-muted d-block">{{cat_list.description}}</small>
+            </td>
+            <td class="align-middle">{{ cat_list.get_posts_count }}</td>
+            <td class="align-middle">{{ cat_list.topics.count }}</td>
+            <td class="align-middle">
+                {% with post=cat_list.get_last_post %}
+                    {% if post %}
+                        <small>
+                            <a class="text-decoration-none text-dark" href="{% url 'topic_posts' cat_list.pk post.topic.pk %}">
+                                By {{ post.created_by.username }} on {{ post.created_at }}
+                            </a>
+                        </small>
+                    {% else %}
+                        <small class="text-muted">
+                            <em>No posts yet</em>
+                        </small>
+                    {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

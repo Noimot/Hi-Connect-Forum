@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %}
+{{category.name}}-{{ block.super}}
+{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url 'category' %}">Category</a></li>
+<li class="breadcrumb-item active">{{ category.name}}</li>
+{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <a href="{% url 'new_topic' category.pk %}" class="btn btn-info">New topic</a>
+</div>
+
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th>Topic</th>
+            <th>Created by</th>
+            <th>Replies</th>
+            <th>Views</th>
+            <th>Last Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for topic in topics %}
+        <tr>
+            <td>
+                <a class="text-dark " href="{% url 'topic_posts' category.pk topic.pk %}">{{topic.subject}}</a>
+            </td>
+
+            <td>{{topic.starter.username}}</td>
+            <td>{{ topic.replies }}</td>
+            <td>{{ topic.views }}</td>
+            <td><td>{{ topic.last_updated|naturaltime }}</td></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% include 'includes/pagination.html' %}
+
+{% endblock %}

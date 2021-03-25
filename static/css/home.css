@@ -1,0 +1,14 @@
+.home-article-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media (max-width: 480) {
+  .home-article-content {
+    flex-direction: column;
+  }
+  .section-data {
+    flex-direction: column;
+  }
+}

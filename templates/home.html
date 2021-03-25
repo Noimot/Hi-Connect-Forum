@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<article class="home-article-content mb-5 d-flex">
+    <div>
+        <p class="fs-2">
+            We believe if women were offered enough support to openly speak about their problems then the world would be
+            a
+            better place ...
+
+        <h2>- Hi-Connect</h2>
+        </p>
+    </div>
+
+    <div>
+        <img src="{% static 'img/young-women1.png' %}" alt="young women" />
+    </div>
+</article>
+
+<section class="container d-flex text-center section-data">
+    <div>
+        <img class="rounded-circle border border-info" src="{% static 'img/OprahWinfrey.png' %}" alt="Oprah-Winfrey" />
+        <p>Surround yourself with only people who are going to lift you higher.. <br />- Oprah Winfrey</span>
+        </p>
+    </div>
+    <div>
+        <img class="ms-5 rounded-circle border border-info" src="{% static 'img/freida-pinto1.png' %}" alt="freida-pinto" />
+        <p>I call upon women to raise each other up, to make each other’s welfare a priority, and to never shame a woman
+            for the
+            choices she makes...
+            <br /> – Frieda Pinto, actress and women’s rights activist
+        </p>
+    </div>
+    <div>
+        <img class="ms-5 rounded-circle border border-info" src="{% static 'img/emma-watson.png' %}" alt="emma-watson" />
+        <p>We’re never, ever, ever going to be able to fly as high unless we’re both in support of each other...<br />
+            – Emma Watson, actress and UN Women Goodwill Ambassador
+        </p>
+    </div>
+</section>
+{% endblock %}
